@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
-import {BrowserRouter, Route} from "react-router-dom"
+import {BrowserRouter, Route, Switch} from "react-router-dom"
 import Products from "./components/Products"
 
 
@@ -30,13 +30,22 @@ class App extends Component {
 
     return (
       <div className="App">
-        <SearchBar searchProduct={myProduct => this.searchProduct(myProduct)} />
+        
         <BrowserRouter >
-          <Route 
-          render={() => 
-          (<Products products={this.state.products} categories={this.state.categories} />)}>
+        <div>
+          <Route path="/" exact>
+          <SearchBar searchProduct={myProduct => this.searchProduct(myProduct)} />
           </Route>
-          
+            <Switch>
+              <Route 
+            // path="/items?q="
+              render={() => 
+              (<Products
+              products={this.state.products} categories={this.state.categories} />)}>
+              </Route>
+            </Switch>
+            {/*acá tiene que ir un route que me re dirija a los detalles del producto*/}
+          </div>
         </BrowserRouter>
       </div>
     );
