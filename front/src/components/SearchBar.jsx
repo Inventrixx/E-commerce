@@ -45,7 +45,7 @@ class SearchBar extends Component {
               onChange={(e) => this.handleChangeInput(e)}
                />
               <button className='search-button'>
-                <img alt='Search' src={Icon} />
+                <img alt='Search' src={Icon} onClick={this.props.passingMyProductsToButton}/>
               </button>
           </form>
         </div>
