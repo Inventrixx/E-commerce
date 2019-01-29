@@ -1,7 +1,10 @@
 import React, {Component} from "react"
 import {BrowserRouter, Router} from "react-router-dom"
+import "../sass/SearchBar.css"
 import Icon from "../Icon.png"
 import LogoAda from "../Icon-ada.png"
+
+
 class SearchBar extends Component {
   constructor(props) {
     super(props);
@@ -23,23 +26,31 @@ class SearchBar extends Component {
       }
   }
   render() {
+    console.log(this.state.inputValue)
     return(
-      <div className="search-bar">
-        <div className="search-bar-main">
-          <div className="search-bar-logo-container">
-            <img className="search-bar-logo" src={LogoAda} />
-          </div>
-          <div className="search-bar-container">
-            <input type="text" 
-            onKeyPress={(e) => this.handleKeyPress(e)}
-            className="search-input"
-            placeholder="No busques mates"
-            onChange={(e) => this.handleChangeInput(e)} 
-            value={this.state.inputValue} />
-            <button className="search-icon"><img src={Icon} /></button>
-          </div>
+      <header>
+      <div className='main-header-container'>
+        <div className='logo-container'>
+          <a href='/'>
+            <img alt='Logo Ada' src={LogoAda} />
+          </a>
+        </div>
+        <div className='search-container'>
+          <form>
+            <input
+              type='text'
+              placeholder='Nunca dejes de buscar'
+              onKeyPress={(e) => this.handleKeyPress(e)}
+              value={this.state.inputValue}
+              onChange={(e) => this.handleChangeInput(e)}
+               />
+              <button className='search-button'>
+                <img alt='Search' src={Icon} />
+              </button>
+          </form>
         </div>
       </div>
+</header>
     )
   }
 }

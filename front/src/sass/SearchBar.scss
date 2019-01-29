@@ -1,0 +1,54 @@
+@import '../App.scss';
+
+header {
+  height: $header-height;
+  background-color: $nav;
+  display: flex;
+  justify-content: center;
+}
+
+.main-header-container {
+  width: $max-width;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-container {
+  height: $logo-height;
+  width: $logo-width;
+  display: inline-block;
+  img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+.search-container {
+  height: $logo-height;
+  width: $search-container-width;
+}
+
+input {
+  height: $button-height;
+  font-size: $header-font;
+  width: $input-width;
+  padding: 0 $header-padding;
+  border: none;
+  border-radius: $img-border-radius 0 0 $img-border-radius;
+}
+
+.search-button {
+  background-color: $gray;
+  height: $button-height;
+  width: $button-width;
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  border-radius: 0 2px 2px 0;
+  img {
+    height: 50%;
+    width: auto;
+    }
+}
