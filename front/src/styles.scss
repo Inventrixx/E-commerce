@@ -1,0 +1,30 @@
+.search-bar {
+  width: 100%;
+  background-color: rgb(228, 24, 119);
+  display: flex;
+  justify-content: center;
+  .search-bar-main {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    .search-bar-logo-container {
+      width: 100%;
+      .search-bar-logo {
+        width: 25%;
+      }
+    }
+    .search-bar-container {
+      width: 100%;
+      .search-input {
+        width: 100%;
+        border-style: none;
+        border-radius: 3px;
+      }
+      .search-icon {
+        width: 40%;
+      }
+    }
+  
+  }
+  
+}
