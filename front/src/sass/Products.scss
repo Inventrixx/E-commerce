@@ -1,0 +1,64 @@
+@import '../App.scss';
+
+
+.product-list-container {
+  border: 1px solid $gray;
+  max-width: $max-width;
+  margin: auto;
+  background-color: $white;
+  position: relative;
+  border-radius: $img-border-radius;
+}
+
+.my-categories {
+    color: $prodlist-location-font-color;
+    font-family: $font-type;
+    font-size: $breadcrumb-font;
+    //margin: $margin-small;
+}
+.img-container{
+  height: $img-prodlist;
+  width: $img-prodlist;
+  display: inline-block;
+  padding: $margin-small;
+
+  img {
+    height: 100%;
+    border-radius: $img-border-radius;
+    width: 100%;
+  }
+}
+
+.product-list-price {
+  font-size: $prodlist-price-font;
+  color: $gray-60;
+  display: inline-block;
+  position: absolute;
+  top: $margin-large;
+  sup {
+    font-size: $prodlist-location-font;
+  }
+}
+
+.product-list-title {
+  position: absolute;
+  top: $margin-title;
+  height: auto;
+  font-size: $prodlist-title-font;
+  color: $gray-60;
+  display: inline-block;
+  max-width: 350px;
+}
+
+.product-list img {
+  margin-left: $margin-small;
+}
+
+.product-list-location {
+  display: inline-block;
+  position: absolute;
+  right: 90px;
+  padding: 50px 0;
+  font-size: $prodlist-location-font;
+  color: $prodlist-location-font-color;
+}

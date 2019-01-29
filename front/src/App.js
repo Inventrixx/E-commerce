@@ -2,34 +2,41 @@ import React, { Component } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import {BrowserRouter, Route} from "react-router-dom"
-import MainSection from "./components/MainSection"
+import Products from "./components/Products"
+
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      categories: [],
       products: []
     }
-    this.onClickFetch = this.onClickFetch.bind(this)
+
   }
 
-    onClickFetch() {
-    fetch("http://localhost:8080/api/items/")
-    .then(res => res.json())
+
+
+    searchProduct(myProduct) {
+    fetch("http://localhost:8080/api/items?q=" + myProduct )
+    .then(res =>{return res.json()} )
     .then(data => this.setState({
-      products: data.results
-    })
-    )
+      categories: data.categories,
+      products: data.items
+    }))
   }
+
   render() {
-    console.log(this.state.products)
+
     return (
       <div className="App">
-        <SearchBar passingMyProductsToButton={this.onClickFetch} />
+        <SearchBar searchProduct={myProduct => this.searchProduct(myProduct)} />
         <BrowserRouter >
-          <Route>
-            <MainSection showingMyProducts={this.state.products} />
+          <Route 
+          render={() => 
+          (<Products products={this.state.products} categories={this.state.categories} />)}>
           </Route>
+          
         </BrowserRouter>
       </div>
     );

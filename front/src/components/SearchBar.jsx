@@ -1,5 +1,4 @@
 import React, {Component} from "react"
-import {BrowserRouter, Router} from "react-router-dom"
 import "../sass/SearchBar.css"
 import Icon from "../Icon.png"
 import LogoAda from "../Icon-ada.png"
@@ -17,16 +16,19 @@ class SearchBar extends Component {
     this.setState({
      inputValue: e.target.value
     })
-
   }
 
   handleKeyPress(e) {
       if(e.which === 13) {
-        console.log("NO BUSQUÉS MATE CARAJOMIERDA")
+        const {inputValue} = this.state
+        this.props.searchProduct(inputValue)
       }
   }
+
+
   render() {
-    console.log(this.state.inputValue)
+    const {inputValue} = this.state
+  
     return(
       <header>
       <div className='main-header-container'>
@@ -36,18 +38,18 @@ class SearchBar extends Component {
           </a>
         </div>
         <div className='search-container'>
-          <form>
+          
             <input
               type='text'
-              placeholder='Nunca dejes de buscar'
+              placeholder='Nunca busques mates'
               onKeyPress={(e) => this.handleKeyPress(e)}
               value={this.state.inputValue}
               onChange={(e) => this.handleChangeInput(e)}
                />
-              <button className='search-button'>
-                <img alt='Search' src={Icon} onClick={this.props.passingMyProductsToButton}/>
+              <button className='search-button'  onClick={() => this.props.searchProduct(inputValue)}>
+                <img alt='Search' src={Icon} />
               </button>
-          </form>
+      
         </div>
       </div>
 </header>
