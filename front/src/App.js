@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
-import {BrowserRouter, Route, Switch} from "react-router-dom"
+import {BrowserRouter, Route, div} from "react-router-dom"
 import Products from "./components/Products"
+import Details from "./components/Details"
 
 
 class App extends Component {
@@ -10,41 +11,53 @@ class App extends Component {
     super(props);
     this.state = {
       categories: [],
-      products: []
+      products: [],
     }
 
   }
-
-
+   searchById(myId) {
+      fetch("http://localhost:8080/api/items/" + myId)
+        .then(res => res.json())
+        .then(data => 
+          console.log("estoy en la función", data))
+    }
+   
 
     searchProduct(myProduct) {
     fetch("http://localhost:8080/api/items?q=" + myProduct )
     .then(res =>{return res.json()} )
     .then(data => this.setState({
       categories: data.categories,
-      products: data.items
+      products: data.items,
+      querySearch: myProduct
     }))
   }
 
   render() {
-
+    //const myProductName = this.state.querySearch
     return (
+      
       <div className="App">
-        
         <BrowserRouter >
         <div>
           <Route path="/" exact>
-          <SearchBar searchProduct={myProduct => this.searchProduct(myProduct)} />
+            <SearchBar searchProduct={myProduct => this.searchProduct(myProduct)} /> 
           </Route>
-            <Switch>
-              <Route 
-            // path="/items?q="
+            <div>
+              <Route exact path="/items"
               render={() => 
               (<Products
-              products={this.state.products} categories={this.state.categories} />)}>
+              products={this.state.products} 
+              categories={this.state.categories}
+              idProducts={myId => this.searchById(myId)} />
+              )}>
               </Route>
-            </Switch>
-            {/*acá tiene que ir un route que me re dirija a los detalles del producto*/}
+              <Route exact
+              path="/items/:id"
+                render={() =>
+                  (<Details /> )}>
+              </Route>
+            </div>
           </div>
         </BrowserRouter>
       </div>
