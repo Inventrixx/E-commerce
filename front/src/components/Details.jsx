@@ -1,13 +1,15 @@
 import React, {Component} from "react"
 import { withRouter } from 'react-router'
-
+import "../sass/Details.css"
+import Breadcrumbs from "./Breadcrumbs";
 class Details extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      categories:{},
+      categories:[],
       myProduct: {},
-      description: ""
+      description: "",
+      price: ""
     }
   }
 
@@ -16,11 +18,12 @@ class Details extends Component {
     fetch("http://localhost:8080/api/items/" + this.props.match.params.id)
       .then(res => {return res.json()})
       .then(function(data){
-        console.log(data)
+        //console.log(data)
         this.setState({
           categories: data.categories,
           myProduct: data.item,
-          description: data.description
+          description: data.description,
+          price: data.item.price
         })
               //.then(data => this.setState({myProduct: data.item}))
 
@@ -30,13 +33,38 @@ class Details extends Component {
     
     }
   render() {
-    //console.log(this.state.myProduct.description)
+    console.log(this.state.myProduct.picture)
+
     return(
       <div>
-        <h1>{this.state.myProduct.title}</h1>
-        <img src={this.state.myProduct.picture} />
-        <p>{this.state.description}</p>
-      </div>
+      <Breadcrumbs categories={this.state.categories} />
+      <div className="product-container">
+          
+        <div className="title-container">
+            <div className="condition">
+            {this.state.myProduct.condition} - {this.state.myProduct.sold_quantity} vendidos
+            </div>
+            <p>{this.state.myProduct.title}</p>
+            <div className="price-container">
+              ${this.state.price.amount}
+              <span className="decimals">
+              {this.state.price.decimal}0
+              </span>
+            </div> 
+            <button className="buy-btn">Comprar</button>
+          </div>
+          <div >
+            </div>
+          <div className="img-container">
+            <img src={this.state.myProduct.picture} alt="" />
+          </div>
+            <div className="description-container">
+            <p className="description-title">Descripción del producto</p>
+          <p className="description">{this.state.description}</p>
+          </div>
+           
+    </div>
+    </div>
       
     )
   }

@@ -1,0 +1,79 @@
+@import '../App.scss';
+
+
+.product-container {
+    font-weight: 800px;
+  max-width: $max-width;
+  margin: $margin-small auto;
+  background-color: $white;
+  position: relative;
+  padding-bottom: $margin-small;
+}
+
+.img-container {
+  margin: $margin-large;
+  display: inline-block;
+  width: $details-img;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.title-container {
+    font-weight: 800px;
+  width: 30%;
+  display: inline-block;
+  position: absolute;
+  right: $margin-large;
+  margin-top: $margin-large;
+  
+  .condition {
+    font-size: $details-upper;
+  }
+  h1 {
+    font-size: $details-title;
+  }
+}
+
+.price-container {
+  display: inline-block;
+  margin-top: $margin-large;
+  margin-bottom: $margin-large;
+  font-size: $details-price;
+  span {
+    display: inline-block;
+  }
+}
+
+.decimals {
+  font-size: $details-title;
+  position: relative;
+  bottom: $margin-small;
+}
+
+.buy-btn{
+  width: 100%;
+  font-size: $header-font;
+  padding: $margin-small;
+  border: none;
+  color:$white;
+  background: $button;
+  border-radius: $img-border-radius;
+  cursor: pointer;
+  outline: none;
+}
+
+.description-container {
+  margin-left: $margin-large;
+}
+
+.description-title {
+  font-size: $details-description-title;
+}
+
+.description {
+  width: 60%;
+  font-size: $details-description;
+  color: $gray-40;
+}

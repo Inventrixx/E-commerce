@@ -37,6 +37,8 @@ router.get("/items", (req, res) => {
         amount: String(myProduct.price).split(".")[0],
         decimal: String(myProduct.price).split(".")[1] || "0"
       },
+      address: myProduct.address.state_name,
+      
       picture: myProduct.thumbnail,
       condition: myProduct.condition,
       free_shipping: myProduct.shipping.free_shipping,
@@ -73,7 +75,7 @@ router.get('/items/:id', function(req, res) {
                   amount: String(resultProductProp.price).split(".")[0],
                   decimal: String(resultProductProp.price).split(".")[1] || "0"
                 },
-                picture: resultProductProp.thumbnail,
+                picture: resultProductProp.pictures[0].url,
                 condition: resultProductProp.condition,
                 shipping: resultProductProp.shipping.free_shipping,
                 sold_quantity: resultProductProp.sold_quantity
