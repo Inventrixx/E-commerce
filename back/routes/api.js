@@ -7,10 +7,7 @@ var axios = require("axios")
 
 
 router.get("/items", (req, res) => {
-  //después del signo de pregunta siempre se llama "query"
-  //los dos puntos indicados en la ruta, es algo parametizable, ya sea una variable o algo,
-    //son cosas distintas cosas que van a ir ingresando.
-  const q = req.query.q; //esto sería "batman"
+  const q = req.query.q; 
 
   axios
   .get("http://api.mercadolibre.com/sites/MLA/search?limit=4&q=" + q)
@@ -88,8 +85,8 @@ router.get('/items/:id', function(req, res) {
         res.json(myProducts)
       })
     .catch(function (err) {console.log("error", err)}) 
-})
-  })
+}).catch(function (err) {console.log("error", err)}) 
+  }).catch(function (err) {console.log("error", err)}) 
 });
 
 module.exports = router;
