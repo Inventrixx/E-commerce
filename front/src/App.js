@@ -34,7 +34,6 @@ class App extends Component {
   }
 
   render() {
-    //const myProductName = this.state.querySearch
     return (
       
       <div className="App">

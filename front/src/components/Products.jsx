@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom"
 import "../sass/Products.css"
-import Breadcumbs from "./Breadcrumbs"
+import "../sass/Breadcrumbs.css"
 import truckIcon from "../Icono-Envio.png"
 
 const Products = props => {
@@ -10,7 +10,7 @@ const Products = props => {
 
    return (
        <section>
-           <Breadcumbs categories={categories} />
+           <div className="breadcrumb-container"><div className="breadcrumb">{categories}</div></div>
            {myProductsToShow.map((prod, i) => {
                const myIdProduct = prod.id
                return (

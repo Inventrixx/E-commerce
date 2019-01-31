@@ -14,27 +14,30 @@ class Details extends Component {
   }
 
   componentDidMount() {
-    //console.log(this.props.match.params.id)
+   
     fetch("http://localhost:8080/api/items/" + this.props.match.params.id)
       .then(res => {return res.json()})
       .then(function(data){
-        //console.log(data)
+          let decimal = data.item.price.decimal
+        if (decimal === "0") {
+           decimal = decimal.padEnd(2, "0")
+        } 
+        else {
+           decimal = decimal.padEnd(1)
+        }
+
         this.setState({
           categories: data.categories,
           myProduct: data.item,
           description: data.description,
-          price: data.item.price
+          price: data.item.price,
+          decimals: decimal
         })
-              //.then(data => this.setState({myProduct: data.item}))
 
         
-      }.bind(this))
-     // this.props.history.push("/items/" + this.props.match.params)
-    
+      }.bind(this))    
     }
-  render() {
-    console.log(this.state.myProduct.picture)
-
+  render() {  
     return(
       <div>
       <Breadcrumbs categories={this.state.categories} />
@@ -48,7 +51,7 @@ class Details extends Component {
             <div className="price-container">
               ${this.state.price.amount}
               <span className="decimals">
-              {this.state.price.decimal}0
+                {this.state.decimals}
               </span>
             </div> 
             <button className="buy-btn">Comprar</button>

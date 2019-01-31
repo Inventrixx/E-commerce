@@ -4,24 +4,31 @@
 .breadcrumb-container {
   max-width: $max-width;
   margin: $margin-small auto;
+  
 }
 
 .breadcrumb {
+  font-size: $breadcrumb-font;
+  color: $gray-40;
+  align-items: center;
+  display: flex;
+  
+
   ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    list-style-image: url('../right-arrow.png');
     li {
+      float: left;
+      margin: 0 0 0  $margin-large ;
         &:last-child {
           font-weight: bold;
+         
         }
-        margin: 0 $margin-large 0 0;
-        float: left;
+       
       }
   }
  
-  font-size: $breadcrumb-font;
-  color: $gray-40;
-  align-items: center;
-  //list-style-image: url('../Images/next.svg');
+  
 }

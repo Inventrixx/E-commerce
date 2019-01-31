@@ -17,15 +17,17 @@ body {
   font-size: 10px;
   color: #666666;
   align-items: center;
+  display: flex;
 }
 .breadcrumb ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  list-style-image: url("../right-arrow.png");
 }
 .breadcrumb ul li {
-  margin: 0 32px 0 0;
   float: left;
+  margin: 0 0 0 32px;
 }
 .breadcrumb ul li:last-child {
   font-weight: bold;
